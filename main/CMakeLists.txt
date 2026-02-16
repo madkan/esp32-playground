@@ -1,3 +1,15 @@
-idf_component_register(SRCS "led_blink.c" "hello_world_main.c"
-                       PRIV_REQUIRES spi_flash esp_driver_gpio
-                       INCLUDE_DIRS "")
+idf_component_register(
+    SRCS 
+        "app_main.c" 
+        "common/led_driver.c"
+        "module_01/module_01_led_blink.c"
+        "module_02/module_02_dual_led.c"
+    PRIV_REQUIRES 
+        spi_flash 
+        esp_driver_gpio   
+    INCLUDE_DIRS 
+        "."
+        "common"
+        "module_01"
+        "module_02"
+)
