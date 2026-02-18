@@ -4,12 +4,15 @@ idf_component_register(
         "common/led_driver.c"
         "module_01/module_01_led_blink.c"
         "module_02/module_02_dual_led.c"
+        "module_03/module_03_uart_led.c"
     PRIV_REQUIRES 
         spi_flash 
-        esp_driver_gpio   
+        esp_driver_gpio
+        driver
     INCLUDE_DIRS 
         "."
         "common"
         "module_01"
         "module_02"
+        "module_03"
 )

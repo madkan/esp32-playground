@@ -19,6 +19,19 @@ Learning ESP-IDF and FreeRTOS using ESP32 DevKit V1. Following the Digikey FreeR
   - Understanding task priorities
   - Scheduler behavior when tasks compete for CPU
   - Modularizing code for tasks (separate `.c` files for each module)
-  
+
+### Module 03 – UART-Controlled LED
+- Two concurrent FreeRTOS tasks:
+  1. LED blink task (rate controlled by global variable)
+  2. UART read task (reads integer from Serial Monitor to update LED rate)
+- Learned:
+  - Inter-task concurrency
+  - Shared-variable communication between tasks
+  - Implemented using the ESP-IDF UART driver
+  - Hardware-to-software data flow in UART:  
+  `UART RX → Hardware FIFO → ISR → Driver ring buffer → Application`
+  - Blocking reads with timeout in FreeRTOS
+  - How ESP-IDF driver APIs differ from high-level console functions (`getchar`, `scanf`)
+
 ## Board
 - ESP32 DevKit V1
