@@ -26,19 +26,7 @@ static void uart_read(void *pvParameters)
     uint8_t buf[LED_INPUT_BUF];
     uint8_t idx = 0;
     char c;
-
-    uart_config_t uart_config = {
-        .baud_rate = 115200,
-        .data_bits = UART_DATA_8_BITS,
-        .parity    = UART_PARITY_DISABLE,
-        .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE
-    };
-    uart_param_config(UART_NUM_0, &uart_config);
-    uart_driver_install(UART_NUM_0, UART_BUF_SIZE, 0, 0, NULL, 0);
-
     memset(buf, 0, LED_INPUT_BUF);
-
     while (1) {
         int len = uart_read_bytes(UART_NUM_0, (uint8_t*)&c, 1, pdMS_TO_TICKS(100));
 
@@ -68,6 +56,16 @@ static void uart_read(void *pvParameters)
 
 void module_03_start(void)
 {
+    uart_config_t uart_config = {
+        .baud_rate = 115200,
+        .data_bits = UART_DATA_8_BITS,
+        .parity    = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE
+    };
+    uart_param_config(UART_NUM_0, &uart_config);
+    uart_driver_install(UART_NUM_0, UART_BUF_SIZE, 0, 0, NULL, 0);
+
     xTaskCreate(led_blink, "LED Blink", 2048, NULL, 5, NULL);
     xTaskCreate(uart_read, "UART Read", 2048, NULL, 5, NULL);
 }

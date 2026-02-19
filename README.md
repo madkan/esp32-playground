@@ -33,5 +33,16 @@ Learning ESP-IDF and FreeRTOS using ESP32 DevKit V1. Following the Digikey FreeR
   - Blocking reads with timeout in FreeRTOS
   - How ESP-IDF driver APIs differ from high-level console functions (`getchar`, `scanf`)
 
+### Module 04 – FreeRTOS Heap/Memory Management
+
+- Two concurrent FreeRTOS tasks:
+  1. UART read task – waits for input, allocates heap memory using pvPortMalloc()
+  2. Print task – waits for notification from the UART task, prints the message, frees the heap memory with vPortFree()
+- Learned:
+  - Dynamic heap allocation and deallocation in FreeRTOS
+  - Thread safe communication between tasks
+  - configASSERT() ensures allocation succeeded. Halts processor if out of memory.
+  - Avoid unsafe direct access to heap pointer before the message is fully copied
+
 ## Board
 - ESP32 DevKit V1
