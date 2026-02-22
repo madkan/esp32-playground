@@ -6,7 +6,8 @@
 #define RUN_MODULE_01  0
 #define RUN_MODULE_02  0
 #define RUN_MODULE_03  0
-#define RUN_MODULE_04  1
+#define RUN_MODULE_04  0
+#define RUN_MODULE_05  1
 
 #if RUN_MODULE_01
 #include "module_01/module_01_led_blink.h"
@@ -22,6 +23,10 @@
 
 #if RUN_MODULE_04
 #include "module_04/module_04_memory_management.h"
+#endif
+
+#if RUN_MODULE_05
+#include "module_05/module_05_queues.h"
 #endif
 
 void app_main(void)
@@ -41,5 +46,9 @@ void app_main(void)
 
 #if RUN_MODULE_04
     module_04_start();
+#endif
+
+#if RUN_MODULE_05
+    module_05_start();
 #endif
 }
