@@ -7,6 +7,7 @@ idf_component_register(
         "module_03/module_03_uart_led.c"
         "module_04/module_04_memory_management.c"
         "module_05/module_05_queues.c"
+        "module_06/module_06_mutex.c"
     PRIV_REQUIRES 
         spi_flash 
         esp_driver_gpio
@@ -19,4 +20,5 @@ idf_component_register(
         "module_03"
         "module_04"
         "module_05"
+        "module_06"
 )
